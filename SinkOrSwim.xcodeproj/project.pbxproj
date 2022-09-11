@@ -16,6 +16,9 @@
 		78B2B83E28C835FB00293F01 /* SinkOrSwimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B83D28C835FB00293F01 /* SinkOrSwimTests.swift */; };
 		78B2B84828C835FB00293F01 /* SinkOrSwimUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B84728C835FB00293F01 /* SinkOrSwimUITests.swift */; };
 		78B2B84A28C835FB00293F01 /* SinkOrSwimUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B84928C835FB00293F01 /* SinkOrSwimUITestsLaunchTests.swift */; };
+		78B2B85928CE55B700293F01 /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85828CE55B700293F01 /* ImageModel.m */; };
+		78B2B85B28CE867B00293F01 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85A28CE867B00293F01 /* TableViewController.swift */; };
+		78B2B85D28CE98DA00293F01 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85C28CE98DA00293F01 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,11 @@
 		78B2B84328C835FB00293F01 /* SinkOrSwimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinkOrSwimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B2B84728C835FB00293F01 /* SinkOrSwimUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkOrSwimUITests.swift; sourceTree = "<group>"; };
 		78B2B84928C835FB00293F01 /* SinkOrSwimUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkOrSwimUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		78B2B85628CE55B700293F01 /* SinkOrSwim-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SinkOrSwim-Bridging-Header.h"; sourceTree = "<group>"; };
+		78B2B85728CE55B700293F01 /* ImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
+		78B2B85828CE55B700293F01 /* ImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		78B2B85A28CE867B00293F01 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		78B2B85C28CE98DA00293F01 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +108,17 @@
 			isa = PBXGroup;
 			children = (
 				78B2B82628C835FB00293F01 /* AppDelegate.swift */,
+				78B2B85728CE55B700293F01 /* ImageModel.h */,
+				78B2B85828CE55B700293F01 /* ImageModel.m */,
 				78B2B82828C835FB00293F01 /* SceneDelegate.swift */,
 				78B2B82A28C835FB00293F01 /* ViewController.swift */,
 				78B2B82C28C835FB00293F01 /* Main.storyboard */,
+				78B2B85A28CE867B00293F01 /* TableViewController.swift */,
+				78B2B85C28CE98DA00293F01 /* TableViewCell.swift */,
 				78B2B82F28C835FB00293F01 /* Assets.xcassets */,
 				78B2B83128C835FB00293F01 /* LaunchScreen.storyboard */,
 				78B2B83428C835FB00293F01 /* Info.plist */,
+				78B2B85628CE55B700293F01 /* SinkOrSwim-Bridging-Header.h */,
 			);
 			path = SinkOrSwim;
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 				TargetAttributes = {
 					78B2B82228C835FB00293F01 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					78B2B83828C835FB00293F01 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -261,6 +275,9 @@
 				78B2B82B28C835FB00293F01 /* ViewController.swift in Sources */,
 				78B2B82728C835FB00293F01 /* AppDelegate.swift in Sources */,
 				78B2B82928C835FB00293F01 /* SceneDelegate.swift in Sources */,
+				78B2B85D28CE98DA00293F01 /* TableViewCell.swift in Sources */,
+				78B2B85B28CE867B00293F01 /* TableViewController.swift in Sources */,
+				78B2B85928CE55B700293F01 /* ImageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -453,6 +471,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = smu.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim/SinkOrSwim-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -463,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -481,6 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = smu.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim/SinkOrSwim-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
