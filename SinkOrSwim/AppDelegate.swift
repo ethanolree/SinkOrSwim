@@ -1,11 +1,10 @@
 //
 //  AppDelegate.swift
-//  SinkOrSwim
-//
-//  Created by Ethan Olree on 9/6/22.
-//
+
 
 import UIKit
+
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    
 
 }
 
