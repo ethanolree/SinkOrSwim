@@ -48,52 +48,61 @@
                                     <action selector="segmentedControlChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="7mw-dv-6x0"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2W-gd-1cl">
-                                <rect key="frame" x="20" y="750" width="260" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="YG3-GM-1p0"/>
-                                </constraints>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2W-gd-1cl">
+                                <rect key="frame" x="20" y="750" width="295.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wch-Oo-a5l">
-                                <rect key="frame" x="300" y="750" width="90" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="02f-1S-QaZ"/>
-                                </constraints>
+                                <rect key="frame" x="323.5" y="753" width="70.5" height="31"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="GUESS">
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="makeAGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gvq-0y-0FD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="5Ke-Eo-0b6" firstAttribute="top" secondItem="y9U-MD-nNN" secondAttribute="bottom" constant="5" id="2dP-cp-GxR"/>
                             <constraint firstItem="ZSa-Ge-UEm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6NF-RE-Ucl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wch-Oo-a5l" secondAttribute="bottom" constant="81" id="7z1-9N-VdF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wch-Oo-a5l" secondAttribute="bottom" constant="78" id="7z1-9N-VdF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V2W-gd-1cl" secondAttribute="bottom" constant="78" id="E9L-Nr-gqV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Ke-Eo-0b6" secondAttribute="trailing" constant="20" id="I3P-n3-NbZ"/>
-                            <constraint firstItem="wch-Oo-a5l" firstAttribute="leading" secondItem="V2W-gd-1cl" secondAttribute="trailing" constant="20" id="IDU-ae-tms"/>
                             <constraint firstItem="5Ke-Eo-0b6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Juz-6h-YOw"/>
                             <constraint firstItem="y9U-MD-nNN" firstAttribute="top" secondItem="ZSa-Ge-UEm" secondAttribute="bottom" constant="61" id="Kzj-X8-3m6"/>
                             <constraint firstItem="V2W-gd-1cl" firstAttribute="top" secondItem="5Ke-Eo-0b6" secondAttribute="bottom" constant="51" id="QiW-IH-9bt"/>
+                            <constraint firstItem="wch-Oo-a5l" firstAttribute="leading" secondItem="V2W-gd-1cl" secondAttribute="trailing" constant="8" symbolic="YES" id="cgU-Ot-L0x"/>
                             <constraint firstItem="ZSa-Ge-UEm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ffe-sf-2bM"/>
-                            <constraint firstItem="wch-Oo-a5l" firstAttribute="top" secondItem="5Ke-Eo-0b6" secondAttribute="bottom" constant="51" id="sz9-UG-Zfh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wch-Oo-a5l" secondAttribute="trailing" constant="20" id="kvr-Fc-3ni"/>
+                            <constraint firstItem="wch-Oo-a5l" firstAttribute="leading" secondItem="V2W-gd-1cl" secondAttribute="trailing" constant="8" symbolic="YES" id="lDR-bV-Ni7"/>
+                            <constraint firstItem="wch-Oo-a5l" firstAttribute="top" secondItem="5Ke-Eo-0b6" secondAttribute="bottom" constant="54" id="sz9-UG-Zfh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y9U-MD-nNN" secondAttribute="trailing" constant="20" id="ujD-67-ZV6"/>
                             <constraint firstItem="V2W-gd-1cl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="veO-EL-cPL"/>
                             <constraint firstItem="y9U-MD-nNN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xzN-2c-ea2"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QdN-Ev-fgn" appends="YES" id="jEt-FT-hUC"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="8ql-lR-hdd"/>
                     <connections>
+                        <outlet property="guessInput" destination="V2W-gd-1cl" id="1gg-Pp-w9J"/>
                         <outlet property="scrollView" destination="y9U-MD-nNN" id="Q2q-Hr-CgT"/>
                         <outlet property="segmentedControl" destination="5Ke-Eo-0b6" id="LNF-2G-iCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QdN-Ev-fgn">
+                    <connections>
+                        <action selector="tapBackground:" destination="BYZ-38-t0r" id="O7p-bc-8aw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2976.811594202899" y="75.669642857142847"/>
         </scene>
