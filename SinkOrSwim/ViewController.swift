@@ -87,6 +87,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         }
     }
     
+    @IBAction func presentSecondViewController() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondVC = storyboard.instantiateViewController(identifier: "ResultsHistoryViewController")
+            
+            secondVC.modalPresentationStyle = .fullScreen
+            secondVC.modalTransitionStyle = .crossDissolve
+            
+            present(secondVC, animated: true, completion: nil)
+        }
+    
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
