@@ -42,6 +42,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
             self.scrollView.maximumZoomScale = 1.6
             self.scrollView.delegate = self
         }
+        self.resizeImage()
         
         self.segmentedControl.removeAllSegments()
 
@@ -53,7 +54,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateSegmentedControl), userInfo: nil, repeats: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -72,12 +73,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
 
     @IBAction func segmentedControlChange(_ sender: UISegmentedControl) {
         self.imageView?.image = self.imageModel.getImageWithName(self.imageModel.getImageNames(forValue: activeId)[sender.selectedSegmentIndex] as! String)
-        self.timer.invalidate();
-        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateSegmentedControl), userInfo: nil, repeats: false)
         
-        if let size = self.imageView?.image?.size{
-            self.scrollView.contentSize = size
-        }
+        self.resizeImage()
+        self.timer.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateSegmentedControl), userInfo: nil, repeats: false)
     }
     
     @IBAction func makeAGuess(_ sender: Any) {
@@ -87,6 +86,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         }
     }
     
+    @IBAction func tapBackground(_ sender: Any) {
+        self.guessInput.resignFirstResponder()
+    }
+    
+    // source: https://stackoverflow.com/questions/41718520/nsnotificationcenter-swift-3-0-on-keyboard-show-and-hide
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -96,15 +100,41 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
 
     }
     
-    @IBAction func tapBackground(_ sender: Any) {
-        self.guessInput.resignFirstResponder()
-    }
-    
     @objc func keyboardWillHide(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize.height
             }
+        }
+    }
+    
+    // MARK: Utility
+    // source: https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
+    func resizeImage() {
+        let targetSize = CGSize(width: 3000, height: 3000)
+        self.scrollView.setZoomScale(1.0, animated: false)
+        
+        if let size = self.imageView?.image?.size{
+                
+            let widthRatio  = targetSize.width  / size.width
+            let heightRatio = targetSize.height / size.height
+            
+            var newSize: CGSize
+            if(widthRatio > heightRatio) {
+                newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+            } else {
+                newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+            }
+            
+            let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+            
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+            self.imageView?.image?.draw(in: rect)
+            self.imageView?.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            self.scrollView.contentSize = newSize
+            self.imageView?.sizeToFit()
         }
     }
 }
