@@ -4,3 +4,4 @@
 
 #import "ImageModel.h"
 #import "AnswerKeyModel.h"
+#import "QuizSettingsModel.h"

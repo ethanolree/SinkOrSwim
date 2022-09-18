@@ -20,6 +20,11 @@
 		78B2B85B28CE867B00293F01 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85A28CE867B00293F01 /* TableViewController.swift */; };
 		78B2B85D28CE98DA00293F01 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85C28CE98DA00293F01 /* TableViewCell.swift */; };
 		78B2B86028D1857F00293F01 /* AnswerKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B85F28D1857F00293F01 /* AnswerKeyModel.m */; };
+		C561B76E28D3D692004C520D /* ResultsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561B76D28D3D692004C520D /* ResultsHistoryViewController.swift */; };
+		C561B77028D3E2B4004C520D /* ModalGuessResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561B76F28D3E2B4004C520D /* ModalGuessResult.swift */; };
+		C561B77228D62DFE004C520D /* LaunchQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561B77128D62DFE004C520D /* LaunchQuizViewController.swift */; };
+		C561B77428D62E18004C520D /* QuizResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C561B77328D62E18004C520D /* QuizResultsViewController.swift */; };
+		C561B77628D66B98004C520D /* QuizSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C561B77528D66B98004C520D /* QuizSettingsModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,12 @@
 		78B2B85C28CE98DA00293F01 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		78B2B85E28D1857F00293F01 /* AnswerKeyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswerKeyModel.h; sourceTree = "<group>"; };
 		78B2B85F28D1857F00293F01 /* AnswerKeyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnswerKeyModel.m; sourceTree = "<group>"; };
+		C561B76D28D3D692004C520D /* ResultsHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsHistoryViewController.swift; sourceTree = "<group>"; };
+		C561B76F28D3E2B4004C520D /* ModalGuessResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalGuessResult.swift; sourceTree = "<group>"; };
+		C561B77128D62DFE004C520D /* LaunchQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchQuizViewController.swift; sourceTree = "<group>"; };
+		C561B77328D62E18004C520D /* QuizResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsViewController.swift; sourceTree = "<group>"; };
+		C561B77528D66B98004C520D /* QuizSettingsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizSettingsModel.m; sourceTree = "<group>"; };
+		C561B77728D66BB0004C520D /* QuizSettingsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizSettingsModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +128,13 @@
 				78B2B82A28C835FB00293F01 /* ViewController.swift */,
 				78B2B85E28D1857F00293F01 /* AnswerKeyModel.h */,
 				78B2B85F28D1857F00293F01 /* AnswerKeyModel.m */,
+				C561B77528D66B98004C520D /* QuizSettingsModel.m */,
+				C561B77728D66BB0004C520D /* QuizSettingsModel.h */,
 				78B2B82C28C835FB00293F01 /* Main.storyboard */,
+				C561B77328D62E18004C520D /* QuizResultsViewController.swift */,
+				C561B77128D62DFE004C520D /* LaunchQuizViewController.swift */,
+				C561B76F28D3E2B4004C520D /* ModalGuessResult.swift */,
+				C561B76D28D3D692004C520D /* ResultsHistoryViewController.swift */,
 				78B2B85A28CE867B00293F01 /* TableViewController.swift */,
 				78B2B85C28CE98DA00293F01 /* TableViewCell.swift */,
 				78B2B82F28C835FB00293F01 /* Assets.xcassets */,
@@ -277,13 +294,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C561B76E28D3D692004C520D /* ResultsHistoryViewController.swift in Sources */,
+				C561B77028D3E2B4004C520D /* ModalGuessResult.swift in Sources */,
+				C561B77228D62DFE004C520D /* LaunchQuizViewController.swift in Sources */,
 				78B2B82B28C835FB00293F01 /* ViewController.swift in Sources */,
 				78B2B82728C835FB00293F01 /* AppDelegate.swift in Sources */,
+				C561B77628D66B98004C520D /* QuizSettingsModel.m in Sources */,
 				78B2B82928C835FB00293F01 /* SceneDelegate.swift in Sources */,
 				78B2B85D28CE98DA00293F01 /* TableViewCell.swift in Sources */,
 				78B2B85B28CE867B00293F01 /* TableViewController.swift in Sources */,
 				78B2B85928CE55B700293F01 /* ImageModel.m in Sources */,
 				78B2B86028D1857F00293F01 /* AnswerKeyModel.m in Sources */,
+				C561B77428D62E18004C520D /* QuizResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

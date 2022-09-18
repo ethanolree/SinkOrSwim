@@ -11,6 +11,8 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(QuizSettingsModel().getHintsYesOrNo())
+        print(QuizSettingsModel().getNoOfQuestions())
     }
     
     lazy private var imageModel:ImageModel = {
