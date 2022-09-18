@@ -15,6 +15,10 @@ class LaunchQuizViewController: UIViewController {
     @IBOutlet weak var sliderStepper: UIStepper!
     @IBOutlet weak var startQuizButton: UIButton!
     
+    lazy var quizSettingsModel: QuizSettingsModel = {
+        return QuizSettingsModel.sharedInstance();
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Default Max/Min for questions
@@ -35,17 +39,12 @@ class LaunchQuizViewController: UIViewController {
     }
     
     @IBAction func sliderFunction(_ sender: UISlider) {
-        sliderQuestions.value = Float(round(sender.value))
         sliderNoOfQuestions.text = Int(sender.value).description
     }
     
     @IBAction func startQuizButtonFunction(_ sender: UIButton) {
-        print("button pressed")
-        QuizSettingsModel().setNoOfQuestions(Int(sliderQuestions.value))
-        QuizSettingsModel().setHintsYesOrNo(hintsSwitch.isOn)
-        
-        print(QuizSettingsModel().getHintsYesOrNo())
-        print(QuizSettingsModel().getNoOfQuestions())
+        quizSettingsModel.setNoOfQuestions(Int(sliderQuestions.value))
+        quizSettingsModel.setHintsYesOrNo(hintsSwitch.isOn)
         
     }
 }

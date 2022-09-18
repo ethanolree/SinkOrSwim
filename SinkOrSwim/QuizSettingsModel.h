@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QuizSettingsModel : NSObject
 
++(QuizSettingsModel*)sharedInstance;
 -(void)setNoOfQuestions:(NSInteger)value;
 -(void)setHintsYesOrNo:(BOOL)value;
 -(NSInteger)getNoOfQuestions;

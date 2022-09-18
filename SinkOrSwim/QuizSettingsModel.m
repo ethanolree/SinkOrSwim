@@ -14,16 +14,27 @@
 @end
 
 @implementation QuizSettingsModel
-@synthesize hints;
-@synthesize noOfQuestions;
+@synthesize hints = _hints;
+@synthesize noOfQuestions = _noOfQuestions;
 
++(QuizSettingsModel*)sharedInstance {
+    static QuizSettingsModel* _sharedInstance = nil;
+    
+    static dispatch_once_t predicate;
+    
+    dispatch_once(&predicate, ^{
+        _sharedInstance = [[QuizSettingsModel alloc] init];
+    });
+    
+    return _sharedInstance;
+}
 
 -(void)setNoOfQuestions: (NSInteger) value{
-    noOfQuestions = value;
+    _noOfQuestions = value;
 }
 
 -(void)setHintsYesOrNo: (BOOL) value{
-    hints = value;
+    _hints = value;
 }
 
 -(NSInteger)getNoOfQuestions{

@@ -11,12 +11,14 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(QuizSettingsModel().getHintsYesOrNo())
-        print(QuizSettingsModel().getNoOfQuestions())
     }
     
     lazy private var imageModel:ImageModel = {
         return ImageModel.sharedInstance()
+    }()
+    
+    lazy var quizSettingsModel: QuizSettingsModel = {
+        return QuizSettingsModel.sharedInstance();
     }()
 
     // MARK: - Table view data source
@@ -26,11 +28,21 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.imageModel.imageNameDict().count
+        return self.quizSettingsModel.getNoOfQuestions()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageNameCell", for: indexPath)
+        var dynamicCellId = "MovieIdCell"
+        
+        if indexPath.row == 1 {
+            dynamicCellId = "IncorrectCell"
+        }
+        
+        if indexPath.row == 2 {
+            dynamicCellId = "CorrectCell"
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: dynamicCellId, for: indexPath)
 
         cell.textLabel!.text = "Movie " + String(indexPath.row + 1)
 
