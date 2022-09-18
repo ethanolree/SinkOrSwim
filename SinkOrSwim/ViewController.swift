@@ -83,7 +83,37 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
     @IBAction func makeAGuess(_ sender: Any) {
         if let guess = self.guessInput.text,
            !guess.isEmpty {
-            print(self.answerKeyModel.checkAnswer(activeId, withValue: guess))
+            
+            let answer = self.answerKeyModel.checkAnswer(activeId, withValue: guess)
+            
+            let manager = FileManager.default
+            let currentPath = manager.currentDirectoryPath
+            struct Correct: Codable {
+                var correct: Int
+                var incorrect: Int
+            }
+            
+            let filepath = NSHomeDirectory()+"/myBin.bin"
+            
+            let currentPathURL = URL(fileURLWithPath: filepath)
+            var correctAnswers = Correct(correct: 0, incorrect: 0)
+            
+            if manager.fileExists(atPath: filepath){
+                let readData = try! Data(contentsOf: currentPathURL)
+                let correctGuessesText = try! JSONDecoder().decode(Correct.self, from: readData)
+            
+                if answer {
+                    correctAnswers = Correct(correct: correctGuessesText.correct+1, incorrect: correctGuessesText.incorrect)
+                } else {
+                    correctAnswers = Correct(correct: correctGuessesText.correct, incorrect: correctGuessesText.incorrect+1)
+                }
+            }
+            
+            try! manager.removeItem(atPath: filepath)
+            let data2 = try! JSONEncoder().encode(correctAnswers)
+            try! data2.write(to: currentPathURL)
+            manager.createFile(atPath: filepath, contents: data2)
+            
         }
     }
     
