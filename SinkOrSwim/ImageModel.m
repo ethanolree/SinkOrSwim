@@ -43,7 +43,8 @@
         _imageNameDict = @{
             @"Movie 1" : @[@"breakfastClub1", @"breakfastClub2", @"breakfastClub3"],
             @"Movie 2": @[@"goneGirl3", @"goneGirl2", @"goneGirl1"],
-            @"Movie 3": @[@"babyDriver3", @"babyDriver2", @"babyDriver1"]
+            @"Movie 3": @[@"babyDriver3", @"babyDriver2", @"babyDriver1"],
+            @"Movie 4": @[@"socialNetwork2", @"socialNetwork1", @"socialNetwork3"]
         };
     
     return _imageNameDict;

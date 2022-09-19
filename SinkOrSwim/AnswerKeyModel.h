@@ -11,7 +11,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AnswerKeyModel : UITableViewCell
 
++(AnswerKeyModel*)sharedInstance;
 -(BOOL)checkAnswer:(NSString*)key withValue:(NSString*)guess;
+-(NSString*)getCorrectAnswer:(NSString*)key;
+-(void)resetAnswers;
+-(NSInteger)getCorrectGuessCount:(NSString*)key;
+-(NSInteger)getIncorrectGuessCount:(NSString*)key;
+-(NSInteger)getTotalCorrectGuessCount;
+-(NSInteger)getTotalIncorrectGuessCount;
 
 @end
 

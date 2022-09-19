@@ -20,6 +20,10 @@ class TableViewController: UITableViewController {
     lazy var quizSettingsModel: QuizSettingsModel = {
         return QuizSettingsModel.sharedInstance();
     }()
+    
+    lazy var answerKeyModel: AnswerKeyModel = {
+        return AnswerKeyModel.sharedInstance();
+    }();
 
     // MARK: - Table view data source
 
@@ -34,17 +38,21 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var dynamicCellId = "MovieIdCell"
         
-        if indexPath.row == 1 {
-            dynamicCellId = "IncorrectCell"
-        }
+        let id = "Movie " + String(indexPath.row + 1)
         
-        if indexPath.row == 2 {
+        if self.answerKeyModel.getCorrectGuessCount(id) > 0 {
             dynamicCellId = "CorrectCell"
+        } else if self.answerKeyModel.getIncorrectGuessCount(id) > 0 {
+            dynamicCellId = "IncorrectCell"
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: dynamicCellId, for: indexPath)
 
         cell.textLabel!.text = "Movie " + String(indexPath.row + 1)
+        
+        if dynamicCellId == "CorrectCell" {
+            cell.detailTextLabel!.text = self.answerKeyModel.getCorrectAnswer(id)
+        }
 
         return cell
     }
@@ -71,6 +79,11 @@ class TableViewController: UITableViewController {
            let name = cell.textLabel?.text {
                 viewController.activeId = name
             }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        super.viewWillAppear(animated)
     }
 
 }

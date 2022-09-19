@@ -14,7 +14,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         return ImageModel.sharedInstance();
     }()
     
-    var answerKeyModel = AnswerKeyModel();
+    lazy var answerKeyModel: AnswerKeyModel = {
+        return AnswerKeyModel.sharedInstance();
+    }();
     
     lazy private var imageView: UIImageView? = {
         return UIImageView.init(image: self.imageModel.getImageWithName(self.imageModel.getImageNames(forValue: activeId)[0] as! String))
@@ -85,47 +87,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         if let guess = self.guessInput.text,
            !guess.isEmpty {
             
-            let answer = self.answerKeyModel.checkAnswer(activeId, withValue: guess)
-            
-            let manager = FileManager.default
-            
-            struct Correct: Codable {
-                var correct: Int
-                var incorrect: Int
-            }
-            
-            let filepath = NSHomeDirectory()+"/myBin.bin"
-            
-            let currentPathURL = URL(fileURLWithPath: filepath)
-            var correctAnswers = Correct(correct: 0, incorrect: 0)
-            
-            if manager.fileExists(atPath: filepath){
-                let readData = try! Data(contentsOf: currentPathURL)
-                let correctGuessesText = try! JSONDecoder().decode(Correct.self, from: readData)
-            
-                if answer {
-                    correctAnswers = Correct(correct: correctGuessesText.correct+1, incorrect: correctGuessesText.incorrect)
-                } else {
-                    correctAnswers = Correct(correct: correctGuessesText.correct, incorrect: correctGuessesText.incorrect+1)
-                }
-            }
-            
-            try! manager.removeItem(atPath: filepath)
-            let data2 = try! JSONEncoder().encode(correctAnswers)
-            try! data2.write(to: currentPathURL)
-            manager.createFile(atPath: filepath, contents: data2)
+            self.answerKeyModel.checkAnswer(activeId, withValue: guess)
         }
     }
-    
-    @IBAction func presentSecondViewController() {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let secondVC = storyboard.instantiateViewController(identifier: "ResultsHistoryViewController")
-            
-            secondVC.modalPresentationStyle = .fullScreen
-            secondVC.modalTransitionStyle = .crossDissolve
-            
-            present(secondVC, animated: true, completion: nil)
-        }
     
     @IBAction func tapBackground(_ sender: Any) {
         self.guessInput.resignFirstResponder()
@@ -152,7 +116,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
     // MARK: Utility
     // source: https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
     func resizeImage() {
-        let targetSize = CGSize(width: 3000, height: 3000)
+        let targetSize = CGSize(width: 2000, height: 2000)
         self.scrollView.setZoomScale(1.0, animated: false)
         
         if let size = self.imageView?.image?.size{
@@ -177,6 +141,19 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
             self.scrollView.contentSize = newSize
             self.imageView?.sizeToFit()
         }
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if let viewController = segue.destination as? QuizResultsViewController,
+           let name = self.activeId {
+                viewController.activeId = name
+            }
     }
 }
 
