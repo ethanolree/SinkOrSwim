@@ -10,13 +10,11 @@
 
 @interface ImageModel();
 
-@property (strong, nonatomic) NSArray* imageNames;
 @property (strong, nonatomic) NSDictionary* imageNameDict;
 
 @end
 
 @implementation ImageModel
-@synthesize imageNames = _imageNames;
 @synthesize imageNameDict = _imageNameDict;
 
 +(ImageModel*)sharedInstance {
@@ -31,20 +29,14 @@
     return _sharedInstance;
 }
 
--(NSArray*) imageNames {
-    if (!_imageNames)
-        _imageNames = @[@"breakfastClub",@"goneGirl",@"babyDriver2"];
-    
-    return _imageNames;
-}
-
 -(NSDictionary*) imageNameDict {
     if (!_imageNameDict)
         _imageNameDict = @{
             @"Movie 1" : @[@"breakfastClub1", @"breakfastClub2", @"breakfastClub3"],
             @"Movie 2": @[@"goneGirl3", @"goneGirl2", @"goneGirl1"],
             @"Movie 3": @[@"babyDriver3", @"babyDriver2", @"babyDriver1"],
-            @"Movie 4": @[@"socialNetwork2", @"socialNetwork1", @"socialNetwork3"]
+            @"Movie 4": @[@"socialNetwork2", @"socialNetwork1", @"socialNetwork3"],
+            @"Movie 5": @[@"whiplash1", @"whiplash2", @"whiplash3"]
         };
     
     return _imageNameDict;
@@ -60,10 +52,6 @@
     image = [UIImage imageNamed:name];
     
     return image;
-}
-
--(NSString*)getImageNameForIndex:(NSInteger)index {
-    return [[self imageNames] objectAtIndex:index];
 }
 
 @end

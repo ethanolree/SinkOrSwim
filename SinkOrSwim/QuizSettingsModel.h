@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(QuizSettingsModel*)sharedInstance;
 -(void)setNoOfQuestions:(NSInteger)value;
 -(void)setHintsYesOrNo:(BOOL)value;
+-(void)setLanguage:(NSString *)language;
 -(NSInteger)getNoOfQuestions;
 -(BOOL)getHintsYesOrNo;
+-(NSString*)getLanguage;
 
 @end
 

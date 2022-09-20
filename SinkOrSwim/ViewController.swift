@@ -18,6 +18,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         return AnswerKeyModel.sharedInstance();
     }();
     
+    lazy var quizSettingsModel: QuizSettingsModel = {
+        return QuizSettingsModel.sharedInstance();
+    }()
+    
     lazy private var imageView: UIImageView? = {
         return UIImageView.init(image: self.imageModel.getImageWithName(self.imageModel.getImageNames(forValue: activeId)[0] as! String))
     }()
@@ -29,6 +33,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var guessInput: UITextField!
+    @IBOutlet weak var hintText: UILabel!
     
     
     override func viewDidLoad() {
@@ -36,6 +41,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         // Do any additional setup after loading the view.
         
         self.guessInput.delegate = self
+        
+        if (self.quizSettingsModel.getHintsYesOrNo()) {
+            self.hintText.text = self.answerKeyModel.getHintForKey(activeId, withLanguage: self.quizSettingsModel.getLanguage())
+        } else {
+            self.hintText.text = ""
+        }
         
         if let size = self.imageView?.image?.size{
             self.scrollView.addSubview(self.imageView!)
@@ -75,12 +86,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
 
     @IBAction func segmentedControlChange(_ sender: UISegmentedControl) {
         self.imageView?.image = self.imageModel.getImageWithName(self.imageModel.getImageNames(forValue: activeId)[sender.selectedSegmentIndex] as! String)
-        self.timer.invalidate();
-        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateSegmentedControl), userInfo: nil, repeats: false)
         
-        if let size = self.imageView?.image?.size{
-            self.scrollView.contentSize = size
-        }
+        self.resizeImage()
+        self.timer.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateSegmentedControl), userInfo: nil, repeats: false)
     }
     
     @IBAction func makeAGuess(_ sender: Any) {

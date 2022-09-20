@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSInteger)getIncorrectGuessCount:(NSString*)key;
 -(NSInteger)getTotalCorrectGuessCount;
 -(NSInteger)getTotalIncorrectGuessCount;
+-(NSString*)getHintForKey:(NSString*)key withLanguage:(NSString*)lang;
 
 @end
 

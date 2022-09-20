@@ -85,5 +85,4 @@ class TableViewController: UITableViewController {
         self.tableView.reloadData()
         super.viewWillAppear(animated)
     }
-
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		785FC68A28D82746007F8F03 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FC68928D82746007F8F03 /* CollectionViewController.swift */; };
+		785FC68C28D82F26007F8F03 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FC68B28D82F26007F8F03 /* CollectionViewCell.swift */; };
 		78B2B82728C835FB00293F01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B82628C835FB00293F01 /* AppDelegate.swift */; };
 		78B2B82928C835FB00293F01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B82828C835FB00293F01 /* SceneDelegate.swift */; };
 		78B2B82B28C835FB00293F01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B2B82A28C835FB00293F01 /* ViewController.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		785FC68928D82746007F8F03 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		785FC68B28D82F26007F8F03 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		78B2B82328C835FB00293F01 /* SinkOrSwim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinkOrSwim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B2B82628C835FB00293F01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78B2B82828C835FB00293F01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				C561B77528D66B98004C520D /* QuizSettingsModel.m */,
 				C561B77728D66BB0004C520D /* QuizSettingsModel.h */,
 				78B2B82C28C835FB00293F01 /* Main.storyboard */,
+				785FC68B28D82F26007F8F03 /* CollectionViewCell.swift */,
 				C561B77328D62E18004C520D /* QuizResultsViewController.swift */,
 				C561B77128D62DFE004C520D /* LaunchQuizViewController.swift */,
 				C561B76F28D3E2B4004C520D /* ModalGuessResult.swift */,
@@ -141,6 +146,7 @@
 				78B2B83128C835FB00293F01 /* LaunchScreen.storyboard */,
 				78B2B83428C835FB00293F01 /* Info.plist */,
 				78B2B85628CE55B700293F01 /* SinkOrSwim-Bridging-Header.h */,
+				785FC68928D82746007F8F03 /* CollectionViewController.swift */,
 			);
 			path = SinkOrSwim;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785FC68A28D82746007F8F03 /* CollectionViewController.swift in Sources */,
 				C561B76E28D3D692004C520D /* ResultsHistoryViewController.swift in Sources */,
 				C561B77028D3E2B4004C520D /* ModalGuessResult.swift in Sources */,
 				C561B77228D62DFE004C520D /* LaunchQuizViewController.swift in Sources */,
@@ -303,6 +310,7 @@
 				78B2B82928C835FB00293F01 /* SceneDelegate.swift in Sources */,
 				78B2B85D28CE98DA00293F01 /* TableViewCell.swift in Sources */,
 				78B2B85B28CE867B00293F01 /* TableViewController.swift in Sources */,
+				785FC68C28D82F26007F8F03 /* CollectionViewCell.swift in Sources */,
 				78B2B85928CE55B700293F01 /* ImageModel.m in Sources */,
 				78B2B86028D1857F00293F01 /* AnswerKeyModel.m in Sources */,
 				C561B77428D62E18004C520D /* QuizResultsViewController.swift in Sources */,
@@ -483,6 +491,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86MHT76G63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SinkOrSwim/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -496,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = smu.SinkOrSwim;
+				PRODUCT_BUNDLE_IDENTIFIER = smu.proj.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim/SinkOrSwim-Bridging-Header.h";
@@ -514,6 +523,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 86MHT76G63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SinkOrSwim/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -527,7 +537,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = smu.SinkOrSwim;
+				PRODUCT_BUNDLE_IDENTIFIER = smu.proj.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim/SinkOrSwim-Bridging-Header.h";

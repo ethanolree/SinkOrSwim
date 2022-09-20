@@ -10,12 +10,14 @@
 @interface AnswerKeyModel()
 
 @property (strong, nonatomic) NSDictionary* answerKeyDict;
+@property (strong, nonatomic) NSDictionary* hintDict;
 @property (strong, nonatomic) NSMutableDictionary* guessesDict;
 
 @end
 
 @implementation AnswerKeyModel
 @synthesize answerKeyDict = _answerKeyDict;
+@synthesize hintDict = _hintDict;
 @synthesize guessesDict = _guessesDict;
 
 -(NSDictionary*) answerKeyDict {
@@ -24,16 +26,50 @@
             @"Movie 1" : @"BREAKFAST CLUB",
             @"Movie 2": @"GONE GIRL",
             @"Movie 3": @"BABY DRIVER",
-            @"Movie 4": @"THE SOCIAL NETWORK"
+            @"Movie 4": @"THE SOCIAL NETWORK",
+            @"Movie 5": @"WHIPLASH"
         };
     
     return _answerKeyDict;
 }
 
+-(NSDictionary*) hintDict {
+    if (!_hintDict)
+        _hintDict = @{
+            @"Movie 1" : @{
+                @"English": @"A John Hughes classic",
+                @"Spanish": @"Un clásico de John Hughes",
+                @"French": @"Un classique de John Hughes"
+            },
+            @"Movie 2": @{
+                @"English": @"A murder mystery",
+                @"Spanish": @"Un misterio de asesinato",
+                @"French": @"Un mystère de meurtre"
+            },
+            @"Movie 3": @{
+                @"English": @"An Ansel Elgort thrill",
+                @"Spanish": @"Una emoción de Ansel Elgort",
+                @"French": @"Un frisson d'Ansel Elgort"
+            },
+            @"Movie 4": @{
+                @"English": @"The story of Facebook",
+                @"Spanish": @"La historia de Facebook",
+                @"French": @"L'histoire de Facebook"
+            },
+            @"Movie 5": @{
+                @"English": @"Drums",
+                @"Spanish": @"Batería",
+                @"French": @"Tambours"
+            }
+        };
+    
+    return _hintDict;
+}
+
 -(NSMutableDictionary*) guessesDict {
     if (!_guessesDict) {
         NSFileManager* manager = [NSFileManager defaultManager];
-        NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/myBin.bin"];
+        NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/Documents/myBin.bin"];
         NSURL* currentPathURL = [NSURL fileURLWithPath: filepath];
         
         if ([manager fileExistsAtPath:filepath]) {
@@ -44,7 +80,8 @@
                 @"Movie 1": @{@"correct": @0, @"incorrect": @0},
                 @"Movie 2": @{@"correct": @0, @"incorrect": @0},
                 @"Movie 3": @{@"correct": @0, @"incorrect": @0},
-                @"Movie 4": @{@"correct": @0, @"incorrect": @0}
+                @"Movie 4": @{@"correct": @0, @"incorrect": @0},
+                @"Movie 5": @{@"correct": @0, @"incorrect": @0}
             } mutableCopy];
         }
     }
@@ -66,6 +103,10 @@
     });
     
     return _sharedInstance;
+}
+
+-(NSString*)getHintForKey:(NSString*)key withLanguage:(NSString*)lang {
+    return [[[self hintDict] valueForKey:key] valueForKey:lang];
 }
 
 -(NSString*)getCorrectAnswer:(NSString*)key {
@@ -140,7 +181,7 @@
     
     
     NSFileManager* manager = [NSFileManager defaultManager];
-    NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/myBin.bin"];
+    NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/Documents/myBin.bin"];
     NSURL* currentPathURL = [NSURL fileURLWithPath: filepath];
     
     [manager removeItemAtPath:filepath error:nil];
@@ -154,7 +195,7 @@
 -(void)resetAnswers {
     NSFileManager* manager = [NSFileManager defaultManager];
     
-    NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/myBin.bin"];
+    NSString* filepath = [NSHomeDirectory() stringByAppendingString:@"/Documents/myBin.bin"];
     
     NSURL* currentPathURL = [NSURL fileURLWithPath: filepath];
     NSMutableDictionary* correctAnswers = [[self guessesDict] mutableCopy];
